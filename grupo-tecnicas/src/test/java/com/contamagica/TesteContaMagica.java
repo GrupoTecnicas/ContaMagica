@@ -15,4 +15,13 @@ public class TesteContaMagica{
     public void setup(){
         c = new ContaMagica();
     }
+
+    @DisplayName("Teste de depósito")
+    @ParameterizedTest
+    @CsvSource({"1000.0,0","50100.0,1","200100.0,2"})
+    public void testeDeposito(double val, int rEsp){
+        c.deposito(val);
+        int rObs = c.getStatus();
+        assertEquals(rObs, rEsp);
+    }
 }
